@@ -1,0 +1,1 @@
+# yes_chef_frontend
