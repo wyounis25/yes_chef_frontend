@@ -5,7 +5,7 @@ export default class App extends React.Component {
   newUser = () => {
     let username = "markitos";
     let password_digest = "c4tz";
-    fetch("http://localhost:3000/users", {
+    fetch("http://localhost:3000/api/v1/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export default class App extends React.Component {
     return ( 
       <div className="App">
         <div>
-          <button className="button">Test</button>
+          <button className="button" onClick={this.newUser}>Test</button>
         </div>
       </div>
     );
