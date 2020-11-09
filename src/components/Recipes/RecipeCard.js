@@ -1,25 +1,63 @@
-import React, { Component } from 'react'
-import Recipe from "./Recipe"
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
-  
-export default class RecipeCard extends Component {
-    handleOnClick = () => {
-        <Recipe recipe={this.props.recipe.recipe}/>
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Recipe from "./Recipe";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+const useStyles = makeStyles((theme) => ({
+   
+    card: {
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    cardMedia: {
+      paddingTop: '56.25%', // 16:9
+    },
+    cardContent: {
+      flexGrow: 1,
     }
-    render() {
-        const recipe = (this.props.recipe.recipe)
-        return (
-            <Router>
-            <div onClick={this.handleOnClick}>
-                <h3>{recipe.label}</h3>
-                <img src={recipe.image} alt={recipe.label}></img>
-            </div>
-            </Router>
-        )
-    }
+  }));
+
+export default function RecipeCard(props) {
+    const classes = useStyles();
+
+    // handleOnClick = () => {
+    //     <Recipe recipe={this.props.recipe.recipe} />;
+    // };
+
+    const recipe = props.recipe.recipe;
+
+    return (
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.cardMedia}
+          image={recipe.image}
+          title={recipe.label}
+        />
+        <CardContent className={classes.cardContent}>
+          <Typography gutterBottom variant="h5" component="h2">
+            {recipe.label}
+          </Typography>
+          <Typography>
+            {recipe.healthLabels.map(hl => {
+                return <li>{hl}</li>
+            })}
+          </Typography>
+        </CardContent>
+        {/* <CardActions>
+          <Button size="small" color="primary">
+            View
+          </Button>
+          <Button size="small" color="primary">
+            Edit
+          </Button>
+        </CardActions> */}
+      </Card>
+    );
 }
