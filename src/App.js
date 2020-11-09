@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  newUser = () => {
+    let username = "markitos";
+    let password_digest = "c4tz";
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username,
+          password_digest,
+        }
+      })
+    })
+  }
+
+  render() {
+    return ( 
+      <div className="App">
+        <div>
+          <button className="button">Test</button>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default App;
+// export default App;
