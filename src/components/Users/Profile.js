@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import MealViewer from "./MealViewer"
-import Form from "./Form"
+import LogIn from "./LogIn"
+
 
 
 export default class Profile extends Component {
     render() {
         return (
             <div>
-                <Form />
+                <h1>Profile</h1>
+                <LogIn />
                 <MealViewer />
             </div>
         )

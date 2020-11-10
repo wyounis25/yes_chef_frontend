@@ -3,6 +3,7 @@ import Search from "./components/Search"
 import Navbar from "./components/Navbar"
 import RecipeContainer from "./components/Recipes/RecipeContainer"
 import Profile from "./components/Users/Profile"
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import "./App.css";
 
 export default class App extends React.Component {
@@ -26,12 +27,16 @@ export default class App extends React.Component {
 
   render() {
     return ( 
-      <div className="App">
-        <Navbar />
-        <Search />
-        <RecipeContainer />
-        <Profile />
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Search />
+          <RecipeContainer />
+          <Switch>
+            <Route path="/profile" exact component={Profile}/>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
