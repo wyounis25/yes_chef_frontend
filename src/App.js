@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import "./App.css";
 import SignUp from "./components/Users/SignUp";
 import LogIn from "./components/Users/LogIn";
+import Recipe from "./components/Recipes/Recipe";
 
 export default class App extends React.Component {
   // newUser = () => {
@@ -42,9 +43,10 @@ export default class App extends React.Component {
           <Navbar />
           <Switch>
             <Route path="/" exact component={this.Home}/>
-            <Route path="/profile" component={Profile}/>
+            <Route path="/profile/:id" component={Profile}/>
             <Route path="/signup" component={SignUp}/>
             <Route path="/login" component={LogIn}/>
+            <Route path="/recipes/:id" component={Recipe}/>
           </Switch>
         </div>
       </Router>
