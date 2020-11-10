@@ -7,7 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Recipe from "./Recipe";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
    
@@ -26,15 +27,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RecipeCard(props) {
     const classes = useStyles();
-
-    // handleOnClick = () => {
-    //     <Recipe recipe={this.props.recipe.recipe} />;
-    // };
-
     const recipe = props.recipe.recipe;
 
+    const handleOnClick = () => {
+        <Link to={`/recipe/${recipe.id}`} />
+        console.log(recipe.id)
+    }
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} onClick={handleOnClick}>
         <CardMedia
           className={classes.cardMedia}
           image={recipe.image}

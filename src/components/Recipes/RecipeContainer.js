@@ -36,7 +36,7 @@ export default function RecipeContainer() {
       <Container className={classes.cardGrid} maxWidth="md">
       <Grid container spacing={4}>
           {recipes.map((recipe) => {
-             return <Grid item key={recipe} xs={12} sm={6} md={4}>
+             return <Grid item key={recipe.id} xs={12} sm={6} md={4}>
                 <RecipeCard recipe={recipe} />
             </Grid>
           })}  

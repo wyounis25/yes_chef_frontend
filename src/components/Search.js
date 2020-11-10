@@ -1,11 +1,17 @@
-import React, { Component } from 'react'
+import React from "react";
+import SearchBar from "material-ui-search-bar";
 
-export default class Search extends Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
+export default function Search() {
+  return (
+    <div>
+      <SearchBar
+        onChange={() => console.log("onChange")}
+        onRequestSearch={() => console.log("onRequestSearch")}
+        style={{
+          margin: "0 auto",
+          maxWidth: 800,
+        }}
+      />
+    </div>
+  );
 }
