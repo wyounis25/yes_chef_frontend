@@ -30,9 +30,10 @@ export default function RecipeCard(props) {
     const recipe = props.recipe.recipe;
 
     const handleOnClick = () => {
-        <Link to={`/recipe/${recipe.id}`} />
-        console.log(recipe.id)
+        console.log();
+        <Link to={`/recipes/${recipe.label}`} component={Recipe} />
     }
+    console.log(recipe.label)
     return (
       <Card className={classes.card} onClick={handleOnClick}>
         <CardMedia
@@ -50,14 +51,6 @@ export default function RecipeCard(props) {
             })}
           </Typography>
         </CardContent>
-        {/* <CardActions>
-          <Button size="small" color="primary">
-            View
-          </Button>
-          <Button size="small" color="primary">
-            Edit
-          </Button>
-        </CardActions> */}
       </Card>
     );
 }
