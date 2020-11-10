@@ -3,6 +3,7 @@ import Search from "./components/Search"
 import Navbar from "./components/Navbar"
 import RecipeContainer from "./components/Recipes/RecipeContainer"
 import Profile from "./components/Users/Profile"
+import Form from "./components/Users/Form"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import "./App.css";
 
@@ -33,7 +34,8 @@ export default class App extends React.Component {
           <Search />
           <RecipeContainer />
           <Switch>
-            <Route path="/profile" exact component={Profile}/>
+            <Route path="/profile" exact component={Form}/>
+
           </Switch>
         </div>
       </Router>
