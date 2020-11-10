@@ -7,33 +7,37 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Recipe from "./Recipe";
+import Form from "./components/Users/Form";
+
 import { Link } from "react-router-dom";
 
-
 const useStyles = makeStyles((theme) => ({
-   
-    card: {
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    cardMedia: {
-      paddingTop: '56.25%', // 16:9
-    },
-    cardContent: {
-      flexGrow: 1,
-    }
-  }));
+  
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  cardMedia: {
+    paddingTop: '56.25%', // 16:9
+  },
+  cardContent: {
+    flexGrow: 1,
+  }
+}));
 
 export default function RecipeCard(props) {
-    const classes = useStyles();
-    const recipe = props.recipe.recipe;
+  const classes = useStyles();
+  const recipe = props.recipe.recipe;
+  const id = recipe.label.replace(/\s+/g, '-').toLowerCase();
+  
+  const handleOnClick = () => {
+        console.log(id);
+        // <Link to={`/recipes/${id}`} component={Recipe} />
+        <Link to="/login" component={Form}/>
+      }
 
-    const handleOnClick = () => {
-        console.log();
-        <Link to={`/recipes/${recipe.label}`} component={Recipe} />
-    }
-    console.log(recipe.label)
+      console.log()
     return (
       <Card className={classes.card} onClick={handleOnClick}>
         <CardMedia
