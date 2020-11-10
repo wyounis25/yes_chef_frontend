@@ -3,6 +3,7 @@ import Search from "./components/Search"
 import Navbar from "./components/Navbar"
 import RecipeContainer from "./components/Recipes/RecipeContainer"
 import Profile from "./components/Users/Profile"
+import Form from "./components/Users/Form"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import "./App.css";
 import SignUp from "./components/Users/SignUp";

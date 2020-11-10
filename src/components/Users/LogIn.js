@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState}  from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -61,6 +61,41 @@ const useStyles = makeStyles((theme) => ({
 export default function LogIn() {
   const classes = useStyles();
 
+
+
+
+  const [user,setUser] = useState('');
+  const [password,setPassword] = useState('');
+  const logIn = (e) => {
+    e.preventDefault()
+    
+      fetch("http://localhost:3000/api/v1/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          user: {
+            username: user,
+            password: password,
+          }
+        })
+      }).then(res => res.json()).then(data => {
+        console.log(data)
+        localStorage.token = data.token
+      })
+  }
+
+
+
+
+
+
+
+
+
+
   return (
       <div>
           <div>
@@ -75,7 +110,8 @@ export default function LogIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form onSubmit={(e) => logIn(e)}
+          className={classes.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
@@ -84,8 +120,11 @@ export default function LogIn() {
               id="username"
               label="Username"
               name="username"
+              value={user}
               autoComplete="username"
               autoFocus
+              onChange={(e) => setUser(e.target.value)}
+
             />
             <TextField
               variant="outlined"
@@ -96,7 +135,9 @@ export default function LogIn() {
               label="Password"
               type="password"
               id="password"
+              value={password}
               autoComplete="current-password"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

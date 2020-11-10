@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -38,6 +38,7 @@ const handleChange = (event) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
+    display: 'flex',
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -63,6 +64,46 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const [state, setState] = React.useState({
+    gilad: true,
+    jason: false,
+    antoine: false,
+  });
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
+  const { gilad, jason, antoine } = state;
+  const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
+
+
+
+
+
+
+
+
+  
+    const [user,setUser] = useState('');
+    const [password,setPassword] = useState('');
+  const signUp = (e) => {
+    e.preventDefault()
+    
+      fetch("http://localhost:3000/api/v1/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          user: {
+            username: user,
+            password: password,
+          }
+        })
+      }).then(res => res.json()).then(data => {
+        console.log(data)})
+  }
   return (
     <div>
       <Container component="main" maxWidth="xs">
@@ -74,17 +115,21 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form className={classes.form} noValidate>
+          <form onSubmit={(e) => signUp(e)}
+          className={classes.form}
+           noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextField
+                <TextField 
                   variant="outlined"
                   required
                   fullWidth
                   id="username"
                   label="Username"
                   name="username"
+                  value={user}
                   autoComplete="username"
+                  onChange={(e) => setUser(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -96,9 +141,49 @@ export default function SignUp() {
                   label="Password"
                   type="password"
                   id="password"
+                  value={password}
                   autoComplete="current-password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
+              <div className={classes.root}>
+      <FormControl component="fieldset" className={classes.formControl}>
+        <FormLabel component="legend">Assign responsibility</FormLabel>
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
+            label="Gilad Gray"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
+            label="Jason Killian"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={antoine} onChange={handleChange} name="antoine" />}
+            label="Antoine Llorca"
+          />
+        </FormGroup>
+        <FormHelperText>Be careful</FormHelperText>
+      </FormControl>
+      <FormControl required error={error} component="fieldset" className={classes.formControl}>
+        <FormLabel component="legend">Pick two</FormLabel>
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
+            label="Gilad Gray"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
+            label="Jason Killian"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={antoine} onChange={handleChange} name="antoine" />}
+            label="Antoine Llorca"
+          />
+        </FormGroup>
+        <FormHelperText>You can display an error</FormHelperText>
+      </FormControl>
+    </div>
               <Grid item xs={12}>
                 <FormControlLabel
                   control={
