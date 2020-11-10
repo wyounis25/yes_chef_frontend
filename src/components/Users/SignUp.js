@@ -12,34 +12,32 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Form from "./Form"
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Form from "./Form";
 
 function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="">
-          Yes, Chef
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="">
+        Yes, Chef
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+
+const handleChange = (event) => {
+    // setState({ ...state, [event.target.name]: event.target.checked });
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
-  },
-  image: {
-    backgroundImage: "url(https://source.unsplash.com/random)",
-    backgroundRepeat: "no-repeat",
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
-    backgroundSize: "cover",
-    backgroundPosition: "center",
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -57,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  formControl: {
+    margin: theme.spacing(3),
   },
 }));
 
@@ -118,11 +119,47 @@ export default function SignUp() {
             </Button>
             <Grid container justify="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
             </Grid>
+            <FormControl component="fieldset" className={classes.formControl}>
+              <FormLabel component="legend">Assign responsibility</FormLabel>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={"hi"}
+                      onChange={handleChange}
+                      name="hi"
+                    />
+                  }
+                  label="Hi"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={"hi"}
+                      onChange={handleChange}
+                      name="hello"
+                    />
+                  }
+                  label="Hello"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={"ho"}
+                      onChange={handleChange}
+                      name="hola"
+                    />
+                  }
+                  label="Hola"
+                />
+              </FormGroup>
+              <FormHelperText>Be careful</FormHelperText>
+            </FormControl>
           </form>
         </div>
         <Box mt={5}>

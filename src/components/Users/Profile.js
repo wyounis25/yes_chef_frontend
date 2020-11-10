@@ -1,17 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import MealViewer from "./MealViewer"
 import LogIn from "./LogIn"
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 
-
-export default class Profile extends Component {
-    render() {
-        return (
+export default function Profile() {
+    return (
+        <Router>
             <div>
                 <h1>Profile</h1>
-                <LogIn />
+                <Switch>
+                    <Route path="/login">
+                        <LogIn/>
+                    </Route>
+                </Switch>
                 <MealViewer />
             </div>
-        )
-    }
+        </Router>
+    )
 }

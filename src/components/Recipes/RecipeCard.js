@@ -7,7 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Recipe from "./Recipe";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
    
