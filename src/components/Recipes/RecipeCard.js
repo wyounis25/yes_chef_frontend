@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Recipe from "./Recipe";
 import { Link } from "react-router-dom";
+import LogIn from '../Users/LogIn';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,8 +31,9 @@ export default function RecipeCard(props) {
     const recipe = props.recipe.recipe;
 
     const handleOnClick = () => {
-        console.log();
-        <Link to={`/recipes/${recipe.label}`} component={Recipe} />
+        console.log("click");
+        // <Link to={`/recipes/${recipe.label}`} component={Recipe} />
+        <Link to="/login" component={LogIn} />
     }
     console.log(recipe.label)
     return (
