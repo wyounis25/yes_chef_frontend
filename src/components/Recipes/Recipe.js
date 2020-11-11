@@ -1,12 +1,9 @@
 import React from 'react'
-
 import Review from "./Review"
 import { useParams, useLocation} from "react-router-dom";
 
-
-
 function Recipe() {
-    const { id } = useParams()
+    // const { id } = useParams()
     const location = useLocation()
     const myrecipe = location.state.recipe
     console.log(myrecipe)
