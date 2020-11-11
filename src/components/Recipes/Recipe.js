@@ -1,15 +1,18 @@
 import React from 'react'
 
 import Review from "./Review"
-import { useParams} from "react-router-dom";
+import { useParams, useLocation} from "react-router-dom";
 
 
 
 function Recipe() {
     const { id } = useParams()
+    const location = useLocation()
+    const myrecipe = location.state.recipe
+    console.log(myrecipe)
     return (
         <div>
-          <h2> You are in the {id} page </h2>  
+          <h2>{myrecipe.label}</h2> 
         </div>
     )
 }

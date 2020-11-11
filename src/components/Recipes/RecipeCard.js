@@ -31,14 +31,33 @@ export default function RecipeCard(props) {
   const classes = useStyles();
   const recipe = props.recipe.recipe;
   const id = recipe.label.replace(/\s+/g, '-').toLowerCase();
-  
-  const handleOnClick = () => {
-        console.log(id);
-        history.push(`/recipe/${id}`)
-      }
+
+// <Link path= "/recipe/:id">
+// <Recipe authed={recipe}/>
+// </Link>
+
+const routeChange = (e) =>{ 
+  console.log(e);
+  let path = `/recipe/${id}`; 
+  history.push(path, {recipe: recipe});
+}
+
+  // const handleOnClick = () => {
+  //       // console.log(id);
+  //       history.push(`/recipe/${id}`)
+
+  //     //   <Link 
+  //     //   to={{
+  //     //     pathname: `/hello/${this.state.nextPage}`, 
+  //     //     query:{thing: 'asdf', another1: 'stuff'}
+  //     //   }}>
+  //     //   Home 1
+  //     // </Link>
+
+  //     }
       console.log()
       return (
-        <Card className={classes.card} onClick={handleOnClick}>
+        <Card className={classes.card} onClick={routeChange}>
         <CardMedia
           className={classes.cardMedia}
           image={recipe.image}

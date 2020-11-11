@@ -48,7 +48,7 @@ export default class App extends React.Component {
             <Route path="/signup" component={SignUp}/>
             <Route path="/login" component={LogIn}/>
             <Route path= "/recipe/:id">
-           <Recipe/>
+            <Recipe/>
           </Route>
           </Switch>
         </div>
