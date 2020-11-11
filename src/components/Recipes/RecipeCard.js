@@ -7,9 +7,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Recipe from "./Recipe";
-import Form from "./components/Users/Form";
+//import Form from "./components/Users/Form";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory, Route} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   
@@ -27,19 +27,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RecipeCard(props) {
+  const history = useHistory();
   const classes = useStyles();
   const recipe = props.recipe.recipe;
   const id = recipe.label.replace(/\s+/g, '-').toLowerCase();
   
   const handleOnClick = () => {
         console.log(id);
-        // <Link to={`/recipes/${id}`} component={Recipe} />
-        <Link to="/login" component={Form}/>
+        history.push(`/recipe/${id}`)
       }
-
       console.log()
-    return (
-      <Card className={classes.card} onClick={handleOnClick}>
+      return (
+        <Card className={classes.card} onClick={handleOnClick}>
         <CardMedia
           className={classes.cardMedia}
           image={recipe.image}

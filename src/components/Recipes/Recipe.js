@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
-import Review from "./Review"
+import React from 'react'
 
-export default class Recipe extends Component {
-    render() {
-        return (
-            <div>
-                <h1>Recipe</h1>
-                <Review />
-            </div>
-        )
-    }
+import Review from "./Review"
+import { useParams} from "react-router-dom";
+
+
+
+function Recipe() {
+    const { id } = useParams()
+    return (
+        <div>
+          <h2> You are in the {id} page </h2>  
+        </div>
+    )
 }
+
+export default Recipe
+
