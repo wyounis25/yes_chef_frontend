@@ -72,14 +72,19 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
 	const classes = useStyles();
   const [pref , setPref] = useState([])
-	const { peanut, treeNut, vegan, vegetarian, sugar } = pref;
+	const {peanut, treeNut, vegan, vegetarian, sugar } = pref;
 	const [ user, setUser ] = useState('');
   const [ password, setPassword ] = useState('');
 
   const handleChange = (e) => {
   console.log(e)
-  // setPref({ ...pref, [e]: e.target.checked });
+  const ename = e.target.name
+  const evalue = e.target.name
+  // const newPref = [...pref,ename : evalue]
+
+ setPref({ ...pref, [ename]: evalue });
  };
+ 
 	const signUp = (e) => {
 		e.preventDefault();
 
@@ -102,7 +107,7 @@ export default function SignUp() {
 				console.log(data);
 			});
   };
-    console.log(setPref)
+    console.log(pref)
 	return (
 		<div>
 			<Container component="main" maxWidth="xs">
@@ -152,9 +157,9 @@ export default function SignUp() {
 												control={
 													<Checkbox
 														checked={peanut}
-														onChange={(e)=> handleChange(e.target.checked)}
+														onChange={handleChange}
                             name="Peanut-Free"
-                            value={pref}
+                           
 													/>
 												}
 												label="Peanut Free"
@@ -163,9 +168,9 @@ export default function SignUp() {
 												control={
 													<Checkbox
 														checked={treeNut}
-                            onChange={handleChange()}
+                            onChange={handleChange}
                             name="TreeNut-Free"
-                            value={pref}
+                            
 													/>
 												}
 												label="Tree Nut Free"
@@ -176,9 +181,9 @@ export default function SignUp() {
 												control={
 													<Checkbox
 														checked={vegetarian}
-                            onChange={(e)=> setPref(e.target.value)}
+                            onChange={handleChange}
                             name="Vegetarian"
-                            value={pref}
+                            
 													/>
 												}
 												label="Vegetarian"
@@ -187,9 +192,9 @@ export default function SignUp() {
 												control={
 													<Checkbox
 														checked={sugar}
-														onChange={(e)=> setPref(e.target.value)}
+                            onChange={handleChange}
                             name="Sugar-Conscious"
-                            value={pref}
+                            
 													/>
 												}
 												label="Sugar-Conscious"
@@ -199,7 +204,7 @@ export default function SignUp() {
 											<FormControlLabel
 												control={
                           <Checkbox checked={vegan}
-                          onChange={(e)=> setPref(e.target.value)} 
+                          onChange={handleChange}
                           value={pref}
                            name="Vegan" />
 												}
