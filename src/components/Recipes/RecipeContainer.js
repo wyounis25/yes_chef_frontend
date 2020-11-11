@@ -20,9 +20,10 @@ export default function RecipeContainer() {
   const classes = useStyles();
   const [recipes, setRecipes] = useState([]);
 
+
   useEffect(() => {
     fetch(
-      `https://api.edamam.com/search?q=pasta&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.edamam.com/search?q=shrimp&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}`
     )
       .then((res) => res.json())
       .then((ingredient) => {
@@ -31,6 +32,7 @@ export default function RecipeContainer() {
       });
   }, []);
 
+  
   return (
     <div>
       <Container className={classes.cardGrid} maxWidth="md">
