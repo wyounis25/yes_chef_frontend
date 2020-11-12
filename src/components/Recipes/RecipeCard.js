@@ -43,12 +43,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RecipeCard(props) {
-    const history = useHistory();
+    //const history = useHistory();
     const classes = useStyles();
-    const recipe = props.recipe.recipe;
+    const recipe = props.recipe;
     const calNumber = recipe.calories
     const calories = Math.ceil(calNumber)
-    const id = recipe.label.replace(/\s+/g, '-').toLowerCase();
+    //const id = recipe.label.replace(/\s+/g, '-').toLowerCase();
     const [expanded, setExpanded] = React.useState(false);
     console.log(recipe)
     // const routeChange = (e) =>{ 

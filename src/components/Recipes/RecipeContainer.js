@@ -34,13 +34,12 @@ export default function RecipeContainer() {
       });
       
     }
-     
+
     const allRecipe = recipes.map(recipe => recipe.recipe)
     let filterSearch = allRecipe.filter(recipe => {
       return recipe.label.toLowerCase().includes(search)})
         return (
     <div>
-
        <Search handleCheck={handleCheck}/>
         <RecipeMealplan />
       <Container className={classes.cardGrid} maxWidth="md">
@@ -55,4 +54,5 @@ export default function RecipeContainer() {
     </div>
   );
 }
+
 // im doing the fetch POST HERE and then I am 
