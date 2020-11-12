@@ -8,26 +8,10 @@ import "./App.css";
 import SignUp from "./components/Users/SignUp";
 import LogIn from "./components/Users/LogIn";
 import Recipe from "./components/Recipes/Recipe";
+import 'fontsource-roboto';
 
 export default class App extends React.Component {
-  // newUser = () => {
-  //   let username = "markitos";
-  //   let password_digest = "c4tz";
-  //   fetch("http://localhost:3000/api/v1/users", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       user: {
-  //         username,
-  //         password_digest,
-  //       }
-  //     })
-  //   })
-  // }
-
+  
   Home = () => (
     <div>
       <h1>Home</h1>
