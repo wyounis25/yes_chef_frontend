@@ -10,11 +10,12 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
+import {useHistory} from "react-router-dom";
 
 
 function Copyright() {
@@ -70,11 +71,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const [profile, setProfile] = useState ({});
   const [pref, setPref] = useState([]);
-  const { peanut, treeNut, vegan, vegetarian, sugar } = pref;
+  const {peanut, treeNut, vegan, vegetarian, sugar} = pref;
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-
+  const history = useHistory();
 
   const getPref = (e) => {
     const ename = e.target.name;
@@ -112,10 +114,15 @@ export default function SignUp() {
     })
     .then((res) => res.json())
     .then((data) => {
-        console.log(data);
+      console.log(data.user)
+      const profile = data.user;
+        setProfile(profile);
     });
+        console.log(profile)
+    // let path = `/profile/${user.username}`;
+    // history.push(path,{profile:profile})
   };
-//   console.log(pref);
+  //console.log(pref);
   return (
     <div>
       <Container component="main" maxWidth="xs">

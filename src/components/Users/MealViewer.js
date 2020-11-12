@@ -1,11 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 
-export default class MealViewer extends Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(1),
+      width: theme.spacing(16),
+      height: theme.spacing(16),
+    },
+  },
+}));
+function MealViewer() {
+    const classes = useStyles();
+
+    return (
+        <div className={classes.root}>
+        <Paper elevation={0} />
+        <Paper />
+        <Paper elevation={3} />
+      </div>
+    )
 }
+
+export default MealViewer
