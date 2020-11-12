@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -51,11 +51,7 @@ export default function RecipeCard(props) {
     //const id = recipe.label.replace(/\s+/g, '-').toLowerCase();
     const [expanded, setExpanded] = React.useState(false);
     console.log(recipe)
-    // const routeChange = (e) =>{ 
-    //     console.log(e);
-    //     let path = `/recipe/${id}`; 
-    //     history.push(path, {recipe: recipe});
-    // }
+    
     const handleExpandClick = () => {
         setExpanded(!expanded);
       };
@@ -74,7 +70,7 @@ export default function RecipeCard(props) {
               </IconButton>
             }
             title={recipe.label}
-            subheader={`Calories: ${calories}`}
+            subheader={`Calories: ${Math.ceil(recipe.calories)}`}
           />
           <CardMedia
             className={classes.media}
