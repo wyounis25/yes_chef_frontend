@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Recipe() {
     const classes = useStyles();
-    // const { id } = useParams()
     const location = useLocation()
     const myrecipe = location.state.recipe
     console.log(myrecipe)
