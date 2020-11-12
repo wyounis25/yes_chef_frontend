@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeCard(props) {
     const history = useHistory();
     const classes = useStyles();
-    const recipe = props.recipe.recipe;
+    const recipe = props.recipe;
     const id = recipe.label.replace(/\s+/g, '-').toLowerCase();
 
     const routeChange = (e) =>{ 

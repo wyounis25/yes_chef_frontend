@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "./components/Search"
+import Search from "./components/Recipes/Search"
 import Navbar from "./components/Navbar"
 import RecipeContainer from "./components/Recipes/RecipeContainer"
 import Profile from "./components/Users/Profile"
@@ -15,7 +15,6 @@ export default class App extends React.Component {
   Home = () => (
     <div>
       <h1>Home</h1>
-      <Search />
       <RecipeContainer />
     </div>
   );
