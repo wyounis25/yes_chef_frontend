@@ -16,18 +16,21 @@ const useStyles = makeStyles((theme) => ({
         margin: 'auto',
         display: 'block',
         width: '500px',
-        height: '500px',
+        height: '350px',
+        border: "35px solid coral",
+        borderRadius: "45px"
     },
     paper: {
         padding: theme.spacing(1),
         textAlign: 'center',
-        color: theme.palette.text.secondary,
+        color: theme.palette.secondary,
+        backgroundColor: 'palegreen',
         whiteSpace: 'nowrap',
         marginBottom: theme.spacing(1),
     },
     divider: {
         margin: theme.spacing(2, 0),
-        color: theme.palette.text.primary,
+        color: theme.palette.primary,
     }
 }));
 
@@ -39,18 +42,23 @@ function Recipe() {
     console.log(myrecipe)
     return (
         <div className={classes.root}>
-            <Grid container spacing={12}>
-                <Grid item xs={12}>
+            <Grid container spacing={10}>
+                <Grid item sm={12}>
                 <Typography variant="h1">
                     {myrecipe.label}
                 </Typography>
                 </Grid>
             </Grid>
             <Divider className={classes.divider} />
-            <Grid container spacing={12} direction='row' justify="flex-start">
+            <Grid container spacing={10} direction='column' justify="flex-start" >
+                <Grid item xs={8}>
+                    <img className={classes.img} src={myrecipe.image} />
+                </Grid>
+            </Grid>
+            <Grid container spacing={10} direction='row' justify="flex-end">
                 <Grid item xs={6}>
                     <Paper className={classes.paper}>
-                        <img className={classes.img} src={myrecipe.image} />
+                        {myrecipe.label}
                     </Paper>
                 </Grid>
             </Grid>
