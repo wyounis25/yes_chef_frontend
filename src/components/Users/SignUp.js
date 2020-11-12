@@ -117,11 +117,11 @@ export default function SignUp() {
       console.log(data.user)
       const profile = data.user;
         setProfile(profile);
+        let path = `/profile/${profile.id}`;
+        history.push(path,{profile:profile})
     });
-        console.log(profile)
-    // let path = `/profile/${user.username}`;
-    // history.push(path,{profile:profile})
   };
+  console.log(profile)
   //console.log(pref);
   return (
     <div>

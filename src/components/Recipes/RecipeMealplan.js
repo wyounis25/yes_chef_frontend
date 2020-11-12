@@ -21,6 +21,10 @@ function RecipeMealplan() {
 		<div className={classes.root}>
 			<Paper elevation={0} />
 			<Paper elevation={0} />
+			<Paper elevation={0} />
+			<Paper elevation={0} />
+			<Paper elevation={0} />
+		
 			<Paper>
 				<Typography component="h4" variant="h10">
 					Monday

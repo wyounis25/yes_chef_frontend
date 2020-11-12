@@ -18,9 +18,9 @@ function MealViewer() {
 
     return (
         <div className={classes.root}>
-        <Paper elevation={0} />
+        {/* <Paper elevation={0} />
         <Paper />
-        <Paper elevation={3} />
+        <Paper elevation={3} /> */}
       </div>
     )
 }
