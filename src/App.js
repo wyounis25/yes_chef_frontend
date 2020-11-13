@@ -17,12 +17,7 @@ export default class App extends React.Component {
 		},
 		allMealplans: []
 	};
-  // componentDidMount = () => {
-	// 	fetch('http://localhost:3000/api/v1/mealplans').then((res) => res.json()).then((meals) => {
-	// 		this.setState({ allMealplans: meals });
-  //   });
-  // };
-  
+ 
 	newMeal = () => {
 		fetch('http://localhost:3000/api/v1/mealplans').then((res) => res.json()).then((meals) => {
 			this.setState({ allMealplans: meals });

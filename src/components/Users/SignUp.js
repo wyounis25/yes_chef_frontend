@@ -116,9 +116,11 @@ export default function SignUp() {
     .then((data) => {
       console.log(data.user)
       const profile = data.user;
+      localStorage.token = profile;
         setProfile(profile);
         let path = `/profile/${profile.id}`;
         history.push(path,{profile:profile})
+        console.log(profile)
     });
   };
   console.log(profile)
