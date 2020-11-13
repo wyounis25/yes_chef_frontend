@@ -30,7 +30,6 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
-    console.log(event.currentTarget)
     setAnchorEl(event.currentTarget);
   };
 
@@ -64,7 +63,7 @@ export default function Navbar() {
             </Menu>
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Yes, Chef
+            Yes Chef!
           </Typography>
         </Toolbar>
       </AppBar>
