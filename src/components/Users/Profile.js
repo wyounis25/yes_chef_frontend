@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MealViewer from './MealViewer';
 import LogIn from './LogIn';
 import Button from '@material-ui/core/Button';
@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		flexWrap: 'wrap',
-        //backgroundColor: '#fbf7f0',
+		//backgroundColor: '#fbf7f0',
 		'& > *': {
 			margin: theme.spacing(10),
 			width: theme.spacing(115),
-            height: theme.spacing(16)
+			height: theme.spacing(16)
 		}
 	},
 	header: {
@@ -30,50 +30,29 @@ const useStyles = makeStyles((theme) => ({
 		marginLeft: 'auto'
 	}
 }));
+
 export default function Profile() {
 
 	const classes = useStyles();
 	const location = useLocation();
 	const myprofile = location.state.profile;
-    console.log(myprofile);
-    
-
-
-
-    // deleteUser = (id) => {
-    //     fetch("http://localhost:3000/api/v1/users", {
-    //         method: "DELETE",
-    //     }).then (res => res.json()).then(user => console.log(user) )
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	console.log(myprofile);
 
 	return (
 		<Router>
 			<div>
-                <Paper 
-                style={{borderRadius: "60px"}}
-                className={classes.root} 
-                elevation={5}>
+				<Paper style={{ borderRadius: '60px' }} className={classes.root} elevation={5}>
 					<Typography className={classes.header} component="h1" variant="h3">
 						<h3>HELLO! {myprofile.username.toUpperCase()}</h3>
 					</Typography>
 				</Paper>
-                <Button
-                 //onClick = {()=> deleteUser(myprofile.id)}
-                 variant="contained" color="secondary" className={classes.button} startIcon={<DeleteIcon />}>
+				<Button
+					//onClick = {()=> deleteUser(myprofile.id)}
+					variant="contained"
+					color="secondary"
+					className={classes.button}
+					startIcon={<DeleteIcon />}
+				>
 					DELETE {myprofile.username.toUpperCase()}
 				</Button>
 				<Switch>
