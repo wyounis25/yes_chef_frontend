@@ -46,7 +46,7 @@ function RecipeMealplan(props) {
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
 						if ( decode.user_id == meal.user_id && meal.date == "sunday") {
-							return meal.recipe_labels
+							return meal.recipe_label
 						}else {
 							return null 
 						}
@@ -62,7 +62,7 @@ function RecipeMealplan(props) {
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
 						if ( decode.user_id == meal.user_id && meal.date == "monday") {
-							return meal.recipe_labels
+							return meal.recipe_label
 						}else {
 							return null
 						}
@@ -78,7 +78,7 @@ function RecipeMealplan(props) {
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
 						if ( decode.user_id == meal.user_id && meal.date == "tuesday") {
-							return meal.recipe_labels
+							return meal.recipe_label
 						} else {
 							return null
 						}
@@ -94,7 +94,7 @@ function RecipeMealplan(props) {
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
 						if ( decode.user_id == meal.user_id &&  meal.date == "wednesday") {
-							return meal.recipe_labels
+							return meal.recipe_label
 						} else {
 							return null 
 						}
@@ -110,7 +110,7 @@ function RecipeMealplan(props) {
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
 						if ( decode.user_id == meal.user_id &&  meal.date == "thursday") {
-							return meal.recipe_labels
+							return meal.recipe_label
 						} else {
 							return null 
 						}
@@ -126,7 +126,7 @@ function RecipeMealplan(props) {
 					<Typography component="li">
 					{props.renderMeals.map(meal => {
 						if ( decode.user_id == meal.user_id &&  meal.date == "friday") {
-							return meal.recipe_labels
+							return meal.recipe_label
 						} else {
 							return null 
 						}
@@ -142,10 +142,10 @@ function RecipeMealplan(props) {
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
 						if ( decode.user_id == meal.user_id &&  meal.date == "saturday") {
-							return meal.recipe_labels
+							return meal.recipe_label
 						} else {
 							return null 
-						}
+						} 
 					})}
 					</Typography>
 					</Typography>

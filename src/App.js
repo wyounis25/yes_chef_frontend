@@ -8,6 +8,7 @@ import SignUp from './components/Users/SignUp';
 import LogIn from './components/Users/LogIn';
 import 'fontsource-roboto';
 
+
 export default class App extends React.Component {
 	state = {
 		currentUser: {
@@ -16,11 +17,18 @@ export default class App extends React.Component {
 		},
 		allMealplans: []
 	};
-
-	componentDidMount () {
+  // componentDidMount = () => {
+	// 	fetch('http://localhost:3000/api/v1/mealplans').then((res) => res.json()).then((meals) => {
+	// 		this.setState({ allMealplans: meals });
+  //   });
+  // };
+  
+	newMeal = () => {
 		fetch('http://localhost:3000/api/v1/mealplans').then((res) => res.json()).then((meals) => {
 			this.setState({ allMealplans: meals });
-		});
+    })
+    console.log("fetched")
+    
 	};
 
 	newSession = (currentUser) => {
@@ -46,18 +54,19 @@ export default class App extends React.Component {
 				localStorage.token = data.token;
 				this.setState({
 					currentUser: data
-				});
+				}) ;
 			});
-	};
-
+  };
 	Home = () => (
-		<div>
+    <div>
 			<h1>Home</h1>
-			<RecipeContainer renderMeals={this.state.allMealplans} currentUser={this.state.currentUser} />
+			<RecipeContainer newMeal={this.newMeal} renderMeals={this.state.allMealplans} currentUser={this.state.currentUser} />
 		</div>
 	);
-
+  
 	render() {
+    // const token = props.currentUser.token
+    // const decode = jwt_decode(token)
 		console.log(this.state.allMealplans);
 		console.log(this.state.currentUser);
 		return (
@@ -65,15 +74,15 @@ export default class App extends React.Component {
 				<div className="App">
 					<Navbar />
 					<Switch>
-						<Route path="/" exact component={this.Home} />
+						<Route exact path="/">
+							<LogIn newSession={this.newSession} />
+						</Route>
+						<Route path="/home" exact component={this.Home} />
 						<Route path="/profile/:id">
 							<Profile renderMeals={this.renderMeals} />
 						</Route>
 						<Route path="/signup" component={SignUp} />
 						{/* <Route path="/login" newSession={this.newSession} component={LogIn}/> */}
-						<Route path="/login">
-							<LogIn newSession={this.newSession} />
-						</Route>
 					</Switch>
 				</div>
 			</Router>

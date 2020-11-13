@@ -21,7 +21,7 @@ export default function RecipeContainer(props) {
   const classes = useStyles();
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-
+  
   const handleCheck = (e) => {
     const search = e.toLowerCase();
     setSearch(search);
@@ -50,7 +50,7 @@ export default function RecipeContainer(props) {
           {filterSearch.map((recipe) => {
             return (
               <Grid item key={recipe.id} xs={12} sm={6} md={4}>
-                <RecipeCard currentUser={props.currentUser} recipe={recipe} />
+                <RecipeCard newMeal={props.newMeal} currentUser={props.currentUser} recipe={recipe} />
               </Grid>
             );
           })}
