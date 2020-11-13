@@ -59,7 +59,7 @@ export default function Navbar() {
             >
               <MenuItem onClick={handleClose} to="/login" component={Link}>Login</MenuItem>
               <MenuItem onClick={handleClose} to="/profile" component={Link}>My Profile</MenuItem>
-              <MenuItem onClick={handleClose} to="/" component={Link}>Logout</MenuItem>
+              <MenuItem onClick={handleClose} to="/home" component={Link}>Logout</MenuItem>
             </Menu>
           </IconButton>
           <Typography variant="h6" className={classes.title}>
