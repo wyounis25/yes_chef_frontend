@@ -29,13 +29,14 @@ const useStyles = makeStyles((theme) => ({
 
 function RecipeMealplan(props) {
 
-	const classes = useStyles();
-	if (props.currentUser.token !== "undefined") {
-		const token = props.currentUser.token
-	}
-	let decode = jwt_decode(token, { header: true })
-	console.log(decode)
-
+	 const classes = useStyles();
+	const token = props.currentUser.token
+	console.log(token)
+	
+	const decode = jwt_decode(token)
+	console.log(decode.user_id)
+	
+	
 
 	return (
 		<div className={classes.root}>
@@ -47,8 +48,8 @@ function RecipeMealplan(props) {
 						Sunday
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
-						if ( decode.id == meal.user_id && meal.date == "sunday") {
-							return meal.recipe_labels
+						if ( decode.user_id == meal.user_id && meal.date == "sunday") {
+							return meal.recipe_label
 						}else {
 							return null 
 						}
@@ -63,8 +64,8 @@ function RecipeMealplan(props) {
 						Monday
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
-						if ( decode.id == meal.user_id && meal.date == "monday") {
-							return meal.recipe_labels
+						if ( decode.user_id == meal.user_id && meal.date == "monday") {
+							return meal.recipe_label
 						}else {
 							return null
 						}
@@ -79,8 +80,8 @@ function RecipeMealplan(props) {
 						Tuesday
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
-						if ( decode.id == meal.user_id && meal.date == "tuesday") {
-							return meal.recipe_labels
+						if ( decode.user_id == meal.user_id && meal.date == "tuesday") {
+							return meal.recipe_label
 						} else {
 							return null
 						}
@@ -95,8 +96,8 @@ function RecipeMealplan(props) {
 						Wednesday
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
-						if ( decode.id == meal.user_id &&  meal.date == "wednesday") {
-							return meal.recipe_labels
+						if ( decode.user_id == meal.user_id &&  meal.date == "wednesday") {
+							return meal.recipe_label
 						} else {
 							return null 
 						}
@@ -111,8 +112,8 @@ function RecipeMealplan(props) {
 						Thursday
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
-						if ( decode.id == meal.user_id &&  meal.date == "thursday") {
-							return meal.recipe_labels
+						if ( decode.user_id == meal.user_id &&  meal.date == "thursday") {
+							return meal.recipe_label
 						} else {
 							return null 
 						}
@@ -127,8 +128,8 @@ function RecipeMealplan(props) {
 						Friday
 					<Typography component="li">
 					{props.renderMeals.map(meal => {
-						if ( decode.id == meal.user_id &&  meal.date == "friday") {
-							return meal.recipe_labels
+						if ( decode.user_id == meal.user_id &&  meal.date == "friday") {
+							return meal.recipe_label
 						} else {
 							return null 
 						}
@@ -143,11 +144,11 @@ function RecipeMealplan(props) {
 						Saturday
 						<Typography component="li">
 					{props.renderMeals.map(meal => {
-						if ( decode.id == meal.user_id &&  meal.date == "saturday") {
-							return meal.recipe_labels
+						if ( decode.user_id == meal.user_id &&  meal.date == "saturday") {
+							return meal.recipe_label
 						} else {
 							return null 
-						}
+						} 
 					})}
 					</Typography>
 					</Typography>

@@ -33,7 +33,7 @@ export default function Navbar() {
             Yes, Chef
           </Typography>
           <Button color="inherit" to="/login" component={Link}>Login</Button>
-          <Button color="inherit" to="/" component={Link}>Logout</Button>
+          <Button color="inherit" to="/home" component={Link}>Logout</Button>
           <Button color="inherit" to="/profile" component={Link}>My Profile</Button>
         </Toolbar>
       </AppBar>

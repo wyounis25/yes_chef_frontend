@@ -67,9 +67,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RecipeCard(props) {
+    
     //const history = useHistory();
-    const token = props.currentUser.token
-    const decode = jwt_decode(token)
+     const token = props.currentUser.token
+     const decode = jwt_decode(token)
     console.log(decode.user_id)
     
 	const classes = useStyles();
@@ -96,10 +97,11 @@ export default function RecipeCard(props) {
 
 	const handleChange = (e) => {
 		const date = e.target.value;
-		console.log(date);
+		//console.log(date);
 		setDate(date)
-	};
-    console.log(recipe.label)
+    };
+    
+    //console.log(recipe.label)
 	const handleSubmit = (e) => {
         fetch("http://localhost:3000/api/v1/mealplans", {
             method: "POST",
@@ -110,13 +112,17 @@ export default function RecipeCard(props) {
             body: JSON.stringify({
                 date: date,
                 user_id: decode.user_id,
-                recipe_labels: recipe.label
+                recipe_label: recipe.label
             })
-        }).then(res => res.json()).then(data => {console.log(data)})
-        setOpen(false)
+        }).then(res => res.json()).then(data => {
+        console.log(data)
+        props.newMeal()}
+        )
+        setOpen(false) 
+      
     };
     
-    console.log(props.currentUser)
+    //console.log(props.currentUser)
     console.log(localStorage)
 	return (
 		<Card className={classes.root}>

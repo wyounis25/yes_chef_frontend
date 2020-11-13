@@ -12,6 +12,8 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import {useHistory} from "react-router-dom";
+
 
 function Copyright() {
 	return (
@@ -57,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function LogIn(props) {
+  const history = useHistory();
 	const classes = useStyles();
 	const [ user, setUser ] = useState({
     username: "",  password: ""}
@@ -73,11 +76,12 @@ export default function LogIn(props) {
 	const logIn = (e) => {
 		e.preventDefault();
     props.newSession(user)
+    // <Link to= "/home">
 	
 	};
 
 	return (
-		<div>
+    <div>
 			<div>
 				<Grid container component="main" className={classes.root}>
 					<CssBaseline />
