@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RecipeContainer() {
+export default function RecipeContainer(props) {
   const classes = useStyles();
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
@@ -36,6 +36,7 @@ export default function RecipeContainer() {
       });
       
     }
+    
 
     const allRecipe = recipes.map(recipe => recipe.recipe)
     let filterSearch = allRecipe.filter(recipe => {
@@ -43,13 +44,13 @@ export default function RecipeContainer() {
         return (
     <div>
        <Search handleCheck={handleCheck}/>
-        <RecipeMealplan />
+        <RecipeMealplan currentUser={props.currentUser}  renderMeals={props.renderMeals}/>
       <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
           {filterSearch.map((recipe) => {
             return (
               <Grid item key={recipe.id} xs={12} sm={6} md={4}>
-                <RecipeCard recipe={recipe} />
+                <RecipeCard currentUser={props.currentUser} recipe={recipe} />
               </Grid>
             );
           })}

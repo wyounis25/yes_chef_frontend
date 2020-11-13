@@ -56,32 +56,24 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export default function LogIn() {
+export default function LogIn(props) {
 	const classes = useStyles();
-
-	const [ user, setUser ] = useState('');
-	const [ password, setPassword ] = useState('');
+	const [ user, setUser ] = useState({
+    username: "",  password: ""}
+    );
+  ;
+  const handleChange = (e) => {
+    console.log(e.target)
+    setUser({
+      ...user, [e.target.name]: e.target.value
+    }
+    )
+    console.log(user)
+  }
 	const logIn = (e) => {
 		e.preventDefault();
-
-		fetch('http://localhost:3000/api/v1/login', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			},
-			body: JSON.stringify({
-				user: {
-					username: user,
-					password: password
-				}
-			})
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-				localStorage.token = data.token;
-			});
+    props.newSession(user)
+	
 	};
 
 	return (
@@ -107,10 +99,10 @@ export default function LogIn() {
 									id="username"
 									label="Username"
 									name="username"
-									value={user}
+									value={user.user}
 									autoComplete="username"
 									autoFocus
-									onChange={(e) => setUser(e.target.value)}
+									onChange={handleChange}
 								/>
 								<TextField
 									variant="outlined"
@@ -121,9 +113,9 @@ export default function LogIn() {
 									label="Password"
 									type="password"
 									id="password"
-									value={password}
+									value={user.password}
 									autoComplete="current-password"
-									onChange={(e) => setPassword(e.target.value)}
+									onChange={handleChange}
 								/>
 								<FormControlLabel
 									control={<Checkbox value="remember" color="primary" />}

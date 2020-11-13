@@ -27,7 +27,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Switch from '@material-ui/core/Switch';
-
+import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -67,7 +67,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RecipeCard(props) {
-	//const history = useHistory();
+    //const history = useHistory();
+    const token = props.currentUser.token
+    const decode = jwt_decode(token)
+    console.log(decode.user_id)
+    
 	const classes = useStyles();
 	const [ open, setOpen ] = useState(false);
 	const [ date, setDate ] = useState('');
@@ -95,28 +99,24 @@ export default function RecipeCard(props) {
 		console.log(date);
 		setDate(date)
 	};
-    function parseJwt(token) {
-        if (!token) { return; }
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace('-', '+').replace('_', '/');
-        return JSON.parse(window.atob(base64));
-    }
+    console.log(recipe.label)
 	const handleSubmit = (e) => {
         fetch("http://localhost:3000/api/v1/mealplans", {
             method: "POST",
             headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
+                "Content-Type": "application/json",
+                Accept: "application/json"
             },
             body: JSON.stringify({
                 date: date,
-                // user_id: user.id,
-                recipe_label: recipe.label
+                user_id: decode.user_id,
+                recipe_labels: recipe.label
             })
-        })
+        }).then(res => res.json()).then(data => {console.log(data)})
         setOpen(false)
     };
-
+    
+    console.log(props.currentUser)
     console.log(localStorage)
 	return (
 		<Card className={classes.root}>

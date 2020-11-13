@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Container from "@material-ui/core/Container";
+import jwt_decode from "jwt-decode";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,16 +27,33 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-function RecipeMealplan() {
+function RecipeMealplan(props) {
+
 	const classes = useStyles();
+	if (props.currentUser.token !== "undefined") {
+		const token = props.currentUser.token
+	}
+	let decode = jwt_decode(token, { header: true })
+	console.log(decode)
+
+
 	return (
 		<div className={classes.root}>
 		<Container className={classes.cardGrid} maxWidth="md">
 		<Grid container direction="row" justify="space-evenly" spacing={6} sm={12}>
   			<Grid item xs={3} spacing={3}>
 				<Paper className={classes.paper}>
-					<Typography component="h4" variant="h10">
+					<Typography component="h4" variant="h10" name= "sunday" >
 						Sunday
+						<Typography component="li">
+					{props.renderMeals.map(meal => {
+						if ( decode.id == meal.user_id && meal.date == "sunday") {
+							return meal.recipe_labels
+						}else {
+							return null 
+						}
+					})}
+					</Typography>
 					</Typography>
 				</Paper>
 			</Grid>
@@ -43,6 +61,15 @@ function RecipeMealplan() {
 				<Paper className={classes.paper}>
 					<Typography component="h4" variant="h10">
 						Monday
+						<Typography component="li">
+					{props.renderMeals.map(meal => {
+						if ( decode.id == meal.user_id && meal.date == "monday") {
+							return meal.recipe_labels
+						}else {
+							return null
+						}
+					})}
+					</Typography>
 					</Typography>
 				</Paper>
 			</Grid>
@@ -50,6 +77,15 @@ function RecipeMealplan() {
 				<Paper className={classes.paper}>
 					<Typography component="h4" variant="h10">
 						Tuesday
+						<Typography component="li">
+					{props.renderMeals.map(meal => {
+						if ( decode.id == meal.user_id && meal.date == "tuesday") {
+							return meal.recipe_labels
+						} else {
+							return null
+						}
+					})}
+					</Typography>
 					</Typography>
 				</Paper>
 			</Grid>
@@ -57,6 +93,15 @@ function RecipeMealplan() {
 				<Paper className={classes.paper}>
 					<Typography component="h4" variant="h10">
 						Wednesday
+						<Typography component="li">
+					{props.renderMeals.map(meal => {
+						if ( decode.id == meal.user_id &&  meal.date == "wednesday") {
+							return meal.recipe_labels
+						} else {
+							return null 
+						}
+					})}
+					</Typography>
 					</Typography>
 				</Paper>
 			</Grid>
@@ -64,6 +109,15 @@ function RecipeMealplan() {
 				<Paper className={classes.paper}>
 					<Typography component="h4" variant="h10">
 						Thursday
+						<Typography component="li">
+					{props.renderMeals.map(meal => {
+						if ( decode.id == meal.user_id &&  meal.date == "thursday") {
+							return meal.recipe_labels
+						} else {
+							return null 
+						}
+					})}
+					</Typography>
 					</Typography>
 				</Paper>
 			</Grid>
@@ -71,6 +125,15 @@ function RecipeMealplan() {
 				<Paper className={classes.paper}>
 					<Typography component="h4" variant="h10">
 						Friday
+					<Typography component="li">
+					{props.renderMeals.map(meal => {
+						if ( decode.id == meal.user_id &&  meal.date == "friday") {
+							return meal.recipe_labels
+						} else {
+							return null 
+						}
+					})}
+					</Typography>
 					</Typography>
 				</Paper>
 			</Grid>
@@ -78,6 +141,15 @@ function RecipeMealplan() {
 				<Paper className={classes.paper}>
 					<Typography component="h4" variant="h10">
 						Saturday
+						<Typography component="li">
+					{props.renderMeals.map(meal => {
+						if ( decode.id == meal.user_id &&  meal.date == "saturday") {
+							return meal.recipe_labels
+						} else {
+							return null 
+						}
+					})}
+					</Typography>
 					</Typography>
 				</Paper>
 			</Grid>
