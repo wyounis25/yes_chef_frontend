@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeCard(props) {
     const history = useHistory();
     const classes = useStyles();
-    const recipe = props.recipe.recipe;
+    const recipe = props.recipe;
     const [expanded, setExpanded] = useState(false);
     console.log(recipe)
     
