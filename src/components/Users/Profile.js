@@ -51,15 +51,6 @@ export default function Profile() {
 
 
 
-
-
-
-
-
-
-
-
-
 	return (
 		<Router>
 			<div>
