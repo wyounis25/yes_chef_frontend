@@ -9,6 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from "react-router-dom";
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,7 +30,6 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
-    console.log(event.currentTarget)
     setAnchorEl(event.currentTarget);
   };
 
@@ -57,13 +57,13 @@ export default function Navbar() {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose} to="/login" component={Link}>Login</MenuItem>
-              <MenuItem onClick={handleClose} to="/profile" component={Link}>My Profile</MenuItem>
-              <MenuItem onClick={handleClose} to="/" component={Link}>Logout</MenuItem>
+              <MenuItem onClick={handleClose} to="/" component={Link}>Login</MenuItem>
+              <MenuItem onClick={handleClose} to="/profile/:id" component={Link}>My Profile</MenuItem>
+              <MenuItem onClick={handleClose} to="/home" component={Link}>Home</MenuItem>
             </Menu>
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Yes, Chef
+            Yes Chef!
           </Typography>
         </Toolbar>
       </AppBar>

@@ -28,14 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 function RecipeMealplan(props) {
 
-	 const classes = useStyles();
+	const classes = useStyles();
 	const token = props.currentUser.token
-	console.log(token)
-	
-	const decode = jwt_decode(token)
-	console.log(decode.user_id)
-	
-	
+	let decode = jwt_decode(token)
+	console.log(decode)
+
 
 	return (
 		<div className={classes.root}>

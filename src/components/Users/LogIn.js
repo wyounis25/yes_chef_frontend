@@ -20,7 +20,7 @@ function Copyright() {
 		<Typography variant="body2" color="textSecondary" align="center">
 			{'Copyright © '}
 			<Link color="inherit" href="https://material-ui.com/">
-				Yes, Chef
+				Yes Chef!
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
@@ -33,8 +33,7 @@ const useStyles = makeStyles((theme) => ({
 		height: '100vh'
 	},
 	image: {
-		backgroundImage: 'url(https://source.unsplash.com/random)',
-		backgroundRepeat: 'no-repeat',
+		backgroundImage: 'url(https://i.imgur.com/oAwxNX4.png)',
 		backgroundColor: theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
 		backgroundSize: 'cover',
 		backgroundPosition: 'center'
